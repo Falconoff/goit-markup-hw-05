@@ -9,6 +9,7 @@
   --bg-filter-btn: #f5f4fa;
   --brd-card-title: #eeeeee;
   --icon-color: #afb1b8;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /*========== common =========== */
@@ -21,6 +22,8 @@ body {
   letter-spacing: 0.03em;
 
   background-color: var(--white-color);
+
+  /* transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 ul {
@@ -126,9 +129,6 @@ header .container {
   align-items: center;
 }
 
-.link-list .item {
-}
-
 .link-list .item:not(:last-child) {
   margin-right: 50px;
 }
@@ -136,22 +136,32 @@ header .container {
 .link-list .current::after {
   content: '';
   position: absolute;
+  display: block;
   bottom: -1px;
   left: 0;
   width: 100%;
-  border: 2px solid var(--accent-color);
+  height: 4px;
   border-radius: 2px;
+  background-color: var(--accent-color);
 }
 
-.header-nav .link {
-  display: block;
+.link-list .link,
+.header-contacts .link {
   font-size: 14px;
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
-  color: var(--main-color);
+
   padding-top: 32px;
   padding-bottom: 32px;
+
+  transition: color 250ms var(--timing-function);
+}
+
+.link-list .link {
+  display: block;
+
+  color: var(--main-color);
 }
 
 .header-nav .current {
@@ -170,13 +180,6 @@ header .container {
   display: flex;
   align-items: center;
 
-  padding-top: 32px;
-  padding-bottom: 32px;
-
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.14;
-  letter-spacing: 0.02em;
   color: var(--second-color);
 }
 
@@ -189,8 +192,8 @@ header .container {
   fill: currentColor;
 }
 
-.header-nav .link:focus,
-.header-nav .link:hover,
+.link-list .link:focus,
+.link-list .link:hover,
 .header-contacts .link:focus,
 .header-contacts .link:hover {
   color: var(--accent-color);
